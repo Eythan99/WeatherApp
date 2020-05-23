@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -16,7 +17,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,19 +47,46 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     String fin = null;
 
-    private static final String BASE_URL = "https://www.metaweather.com/";
+    private SharedPreferences sharedPreferences;
+
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        sharedPreferences =  getSharedPreferences("application_WeatherA pp",Context.MODE_PRIVATE);
 
+        gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        weatherData = getDataFromCache();
+
+        if(weatherData != null){
+            showList();
+        }else{
+            weatherData = new ArrayList<Weather>();
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        }
+
+    }
+
+    private List<Weather> getDataFromCache() {
+
+        String jsonWeather = sharedPreferences.getString(Constants.KEY_WEATHER_LIST, null);
+
+        if(jsonWeather == null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Weather>>(){}.getType();
+            return gson.fromJson(jsonWeather, listType);
+        }
     }
 
     private void showList() {
@@ -72,12 +102,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     private void makeApiWoeidCall(){
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -108,12 +134,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     private void makeApiWeatherCall(String woeid){
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -132,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     weatherData.add(weather);
                     listWoeidIncrementation++;
                     if(listWoeidIncrementation.equals(listWoeidSize)){
+                        saveList();
                         showList();
                     }else{
                         makeApiWeatherCall(listWoeid.get(listWoeidIncrementation));
@@ -147,6 +170,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+    }
+
+    private void saveList() {
+
+        String jsonString = gson.toJson(weatherData);
+ 
+        sharedPreferences
+                .edit()
+                 .putString(Constants.KEY_WEATHER_LIST, jsonString)
+                .apply();
+
+        Toast.makeText(getApplicationContext(), "List saved", Toast.LENGTH_SHORT).show();
     }
 
     private void showError() {
