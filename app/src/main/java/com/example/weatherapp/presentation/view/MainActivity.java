@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.weatherapp.R;
+import com.example.weatherapp.presentation.Injection;
 import com.example.weatherapp.presentation.controller.MainController;
 import com.example.weatherapp.presentation.model.Weather;
 import com.google.gson.GsonBuilder;
@@ -33,9 +34,8 @@ public class MainActivity extends AppCompatActivity{
 
         controller = new MainController(
                 this,
-                new GsonBuilder()
-                .setLenient()
-                .create(),getSharedPreferences("application_WeatherA pp", Context.MODE_PRIVATE)
+                Injection.getGson(),
+                Injection.getSharedPreferences(getApplicationContext())
         );
 
         controller.onStart();

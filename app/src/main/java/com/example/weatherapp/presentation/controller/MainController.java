@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.weatherapp.Constants;
 import com.example.weatherapp.data.WeatherApi;
+import com.example.weatherapp.presentation.Injection;
 import com.example.weatherapp.presentation.model.Place;
 import com.example.weatherapp.presentation.model.RestWeatherResponse;
 import com.example.weatherapp.presentation.model.Weather;
@@ -80,14 +81,8 @@ public class MainController implements LocationListener {
     }
 
     private void makeApiWoeidCall(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
 
-        WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-
-        Call<List<Place>> call = weatherApi.getWoeidResponse(latitude + "," + longitude);
+        Call<List<Place>> call = Injection.getWeatherApi().getWoeidResponse(latitude + "," + longitude);
         call.enqueue(new Callback<List<Place>>() {
             @Override
             public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
@@ -112,14 +107,8 @@ public class MainController implements LocationListener {
 
     private void makeApiWeatherCall(String woeid){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
 
-        WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-
-        Call<RestWeatherResponse> call = weatherApi.getWeatherResponse("https://www.metaweather.com/api/location/"+woeid);
+        Call<RestWeatherResponse> call = Injection.getWeatherApi().getWeatherResponse("https://www.metaweather.com/api/location/"+woeid);
         call.enqueue(new Callback<RestWeatherResponse>() {
             @Override
             public void onResponse(Call<RestWeatherResponse> call, Response<RestWeatherResponse> response) {
