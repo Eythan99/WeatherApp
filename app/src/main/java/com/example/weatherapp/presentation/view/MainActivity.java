@@ -1,4 +1,4 @@
-package com.example.weatherapp;
+package com.example.weatherapp.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -15,6 +15,13 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.weatherapp.Constants;
+import com.example.weatherapp.R;
+import com.example.weatherapp.data.WeatherApi;
+import com.example.weatherapp.presentation.model.Place;
+import com.example.weatherapp.presentation.model.RestWeatherResponse;
+import com.example.weatherapp.presentation.model.Weather;
+import com.example.weatherapp.presentation.view.ListAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;

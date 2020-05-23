@@ -1,8 +1,8 @@
-package com.example.weatherapp;
+package com.example.weatherapp.presentation.model;
 
 public class Place {
 
-    String woeid;
+    public String woeid;
 
     public Place(String woeid) {
         this.woeid = woeid;

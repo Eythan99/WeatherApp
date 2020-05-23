@@ -1,13 +1,13 @@
-package com.example.weatherapp;
+package com.example.weatherapp.presentation.model;
 
 import java.util.List;
 
 public class RestWeatherResponse {
 
-    private String title;
-    private String sun_rise;
-    private String sun_set;
-    private List<Consolidated_weather> consolidated_weather;
+    public String title;
+    public String sun_rise;
+    public String sun_set;
+    public List<Consolidated_weather> consolidated_weather;
 
     public RestWeatherResponse(String title, String sun_rise, String sun_set, List<Consolidated_weather> consolidated_weather) {
         this.title = title;

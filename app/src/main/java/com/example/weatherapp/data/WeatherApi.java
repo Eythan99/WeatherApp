@@ -1,4 +1,7 @@
-package com.example.weatherapp;
+package com.example.weatherapp.data;
+
+import com.example.weatherapp.presentation.model.Place;
+import com.example.weatherapp.presentation.model.RestWeatherResponse;
 
 import java.util.List;
 

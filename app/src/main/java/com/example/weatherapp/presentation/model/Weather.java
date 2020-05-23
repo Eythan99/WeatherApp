@@ -1,20 +1,20 @@
-package com.example.weatherapp;
+package com.example.weatherapp.presentation.model;
 
 public class Weather {
 
-    private String title;
-    private String sun_rise;
-    private String sun_set;
-    private String weather_state_name;
-    private String weather_state_abbr;
-    private String wind_direction_compass;
-    private String min_temp;
-    private String max_temp;
-    private String the_temp;
-    private String wind_speed;
-    private String air_pressure;
-    private String humidity;
-    private String visibility;
+    public String title;
+    public String sun_rise;
+    public String sun_set;
+    public String weather_state_name;
+    public String weather_state_abbr;
+    public String wind_direction_compass;
+    public String min_temp;
+    public String max_temp;
+    public String the_temp;
+    public String wind_speed;
+    public String air_pressure;
+    public String humidity;
+    public String visibility;
 
     public Weather(String title, String sun_rise, String sun_set, String weather_state_name, String weather_state_abbr, String wind_direction_compass, String min_temp, String max_temp, String the_temp, String wind_speed, String air_pressure, String humidity, String visibility) {
         this.title = title;
