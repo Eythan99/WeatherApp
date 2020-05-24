@@ -47,4 +47,4 @@ https://github.com/Eythan99/WeatherApp
   - La pression atmospherique, l'humidité, la visibilité et la vitesse du vent
 - Images illustrants chaque information
 
-<img src="image/detail1.png"> <img src="Image/detail2.png"> 
+<img src="Image/detail1.png"> <img src="Image/detail2.png"> 
