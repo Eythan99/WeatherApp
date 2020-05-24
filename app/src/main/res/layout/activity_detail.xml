@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/couche"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.791"
@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/leve"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
@@ -120,22 +120,22 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageHumidity"
-        android:layout_width="29dp"
-        android:layout_height="31dp"
+        android:id="@+id/imagePression"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.607"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/visibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="4dp"
         android:text="43 %"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -148,7 +148,7 @@
         android:id="@+id/humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="4dp"
         android:text="60 %"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -160,60 +160,62 @@
         android:id="@+id/pression"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="4dp"
         android:text=" 1030 mbar"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imagePression"
         app:layout_constraintEnd_toEndOf="@+id/imagePression"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="@+id/imagePression" />
 
     <ImageView
         android:id="@+id/imageVisibility"
-        android:layout_width="29dp"
-        android:layout_height="31dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.607"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/imageHumidity"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/vent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="4dp"
         android:text="8 mph"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageVent"
         app:layout_constraintEnd_toEndOf="@+id/imageVent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageVent" />
 
     <ImageView
         android:id="@+id/imageVent"
-        android:layout_width="29dp"
-        android:layout_height="31dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
-    <ImageView
-        android:id="@+id/imagePression"
-        android:layout_width="29dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.61"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.607"
         app:srcCompat="@drawable/ic_launcher_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 
 import com.example.weatherapp.Constants;
-import com.example.weatherapp.data.WeatherApi;
 import com.example.weatherapp.presentation.Injection;
 import com.example.weatherapp.presentation.model.Place;
 import com.example.weatherapp.presentation.model.RestWeatherResponse;
@@ -29,9 +28,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class MainController implements LocationListener {
 
     private SharedPreferences sharedPreferences;

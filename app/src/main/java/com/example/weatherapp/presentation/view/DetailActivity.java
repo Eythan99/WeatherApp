@@ -81,6 +81,11 @@ public class DetailActivity extends AppCompatActivity{
         txtVisibility.setText(weather.getVisibility()+" %");
         txtVent.setText(weather.getWind_speed()+" mph");
 
+        Picasso.get().load("https://github.com/Eythan99/WeatherApp/blob/master/Image/Barometric_Pressure-512.png?raw=true").into(imagePressure);
+        Picasso.get().load("https://github.com/Eythan99/WeatherApp/blob/master/Image/humidity.png?raw=true").into(imageHumidity);
+        Picasso.get().load("https://github.com/Eythan99/WeatherApp/blob/master/Image/eye-visibility.png?raw=true").into(imageVisibility);
+        Picasso.get().load("https://github.com/Eythan99/WeatherApp/blob/master/Image/wind-sign.png?raw=true").into(imageVent);
+
     }
 
 }
