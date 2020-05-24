@@ -7,8 +7,4 @@ public class Place {
     public Place(String woeid) {
         this.woeid = woeid;
     }
-
-    public String getWoeid() {
-        return woeid;
-    }
 }

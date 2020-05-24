@@ -114,10 +114,16 @@ public class MainController implements LocationListener {
             public void onResponse(Call<RestWeatherResponse> call, Response<RestWeatherResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
                     RestWeatherResponse currentWeather =response.body();
-                    Weather weather = new Weather(currentWeather.getTitle(), currentWeather.getSun_rise(), currentWeather.getSun_set(), currentWeather.getConsolidated_weather().get(0).getWeather_state_name(),
-                            currentWeather.getConsolidated_weather().get(0).getWeather_state_abbr(), currentWeather.getConsolidated_weather().get(0).getWind_direction_compass(), currentWeather.getConsolidated_weather().get(0).getMin_temp(),
-                            currentWeather.getConsolidated_weather().get(0).getMax_temp(), currentWeather.getConsolidated_weather().get(0).getThe_temp(), currentWeather.getConsolidated_weather().get(0).getWind_speed(),
-                            currentWeather.getConsolidated_weather().get(0).getAir_pressure(), currentWeather.getConsolidated_weather().get(0).getHumidity(), currentWeather.getConsolidated_weather().get(0).getVisibility());
+                    Weather weather = new Weather(currentWeather.getTitle(), currentWeather.getSun_rise(), currentWeather.getSun_set(),
+                            currentWeather.getConsolidated_weather().get(0).getWeather_state_name(), currentWeather.getConsolidated_weather().get(0).getWeather_state_abbr(),
+                            currentWeather.getConsolidated_weather().get(0).getWind_direction_compass(),
+                            currentWeather.getConsolidated_weather().get(0).getMin_temp().substring(0,currentWeather.getConsolidated_weather().get(0).getMin_temp().indexOf(".")),
+                            currentWeather.getConsolidated_weather().get(0).getMax_temp().substring(0,currentWeather.getConsolidated_weather().get(0).getMax_temp().indexOf(".")),
+                            currentWeather.getConsolidated_weather().get(0).getThe_temp().substring(0,currentWeather.getConsolidated_weather().get(0).getThe_temp().indexOf(".")),
+                            currentWeather.getConsolidated_weather().get(0).getWind_speed().substring(0,currentWeather.getConsolidated_weather().get(0).getWind_speed().indexOf(".")),
+                            currentWeather.getConsolidated_weather().get(0).getAir_pressure().substring(0,currentWeather.getConsolidated_weather().get(0).getAir_pressure().indexOf(".")),
+                            currentWeather.getConsolidated_weather().get(0).getHumidity(),
+                            currentWeather.getConsolidated_weather().get(0).getVisibility().substring(0,currentWeather.getConsolidated_weather().get(0).getVisibility().indexOf(".")));
                     view.weatherData.add(weather);
                     listWoeidIncrementation++;
                     if(listWoeidIncrementation.equals(listWoeidSize)){
@@ -174,4 +180,7 @@ public class MainController implements LocationListener {
 
     }
 
+    public void onItemClick(Weather weather) {
+        view.navigateToDetails(weather);
+    }
 }
